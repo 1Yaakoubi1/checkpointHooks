@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useState } from 'react';
+import AddMovie from './add';
+import './App.js';
+import Counter from './Counter';
 
 function App() {
+
+
+const [show,setShow]=useState(false)
+const [movies,setMovies]=useState([{title:"hey"}])
+
+// const toggleshow=()=>{ this.setState({show:! this.state.show })  }
+
+const toggleshow=()=>{setShow(!show)}
+
+console.log(show)
+
   return (
+  
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <button  onClick={toggleshow}   >   show</button>
+      {show &&   <Counter/> }
+      <AddMovie  movies={movies}  setMovies={setMovies}   ></AddMovie>
+
     </div>
   );
 }
